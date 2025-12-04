@@ -3,7 +3,7 @@ from unittest import mock
 
 from airflow.models import Connection
 
-from airflow_clickhouse_plugin.hooks.clickhouse_dbapi import \
+from airflow_clickhouse_plug.hooks.clickhouse_dbapi import \
     ClickHouseDbApiHook
 
 

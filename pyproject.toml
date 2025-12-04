@@ -32,10 +32,10 @@ dynamic = [
 ]
 
 [project.urls]
-GitHub = "https://github.com/StashOfCode/airflow-clickhouse-plugin"
-Documentation = "https://github.com/StashOfCode/airflow-clickhouse-plugin#airflow-clickhouse-plugin"
-Changelog = "https://github.com/StashOfCode/airflow-clickhouse-plugin/releases"
-Issues = "https://github.com/StashOfCode/airflow-clickhouse-plugin/issues"
+GitHub = "https://github.com/StashOfCode/airflow-clickhouse-plug"
+Documentation = "https://github.com/StashOfCode/airflow-clickhouse-plug#airflow-clickhouse-plug"
+Changelog = "https://github.com/StashOfCode/airflow-clickhouse-plug/releases"
+Issues = "https://github.com/StashOfCode/airflow-clickhouse-plug/issues"
 
 [project.optional-dependencies]
 "common.sql" = [

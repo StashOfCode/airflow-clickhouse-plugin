@@ -3,8 +3,8 @@ import typing as t
 from airflow.exceptions import AirflowException
 from airflow.sensors.base import BaseSensorOperator
 
-from airflow_clickhouse_plugin.hooks.clickhouse import ExecuteReturnT
-from airflow_clickhouse_plugin.operators.clickhouse import \
+from airflow_clickhouse_plug.hooks.clickhouse import ExecuteReturnT
+from airflow_clickhouse_plug.operators.clickhouse import \
     BaseClickHouseOperator
 
 

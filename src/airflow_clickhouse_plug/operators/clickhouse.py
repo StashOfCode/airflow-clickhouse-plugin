@@ -2,7 +2,7 @@ import typing as t
 
 from airflow.models import BaseOperator
 
-from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook, \
+from airflow_clickhouse_plug.hooks.clickhouse import ClickHouseHook, \
     ExecuteParamsT, ExecuteReturnT, default_conn_name
 
 

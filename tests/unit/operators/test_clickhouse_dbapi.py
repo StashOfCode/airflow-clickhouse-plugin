@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from airflow_clickhouse_plugin.operators.clickhouse_dbapi import \
+from airflow_clickhouse_plug.operators.clickhouse_dbapi import \
     ClickHouseBaseDbApiOperator
 
 
@@ -28,7 +28,7 @@ class ClickHouseBaseDbApiOperatorTestCase(unittest.TestCase):
 
     def setUp(self):
         self._hook_cls_patcher = mock.patch('.'.join((
-            'airflow_clickhouse_plugin.operators',
+            'airflow_clickhouse_plug.operators',
             'clickhouse_dbapi.ClickHouseDbApiHook',
         )))
         self._hook_cls_mock = self._hook_cls_patcher.start()

@@ -3,7 +3,7 @@ from unittest import mock
 
 from airflow import AirflowException
 
-from airflow_clickhouse_plugin.sensors.clickhouse import ClickHouseSensor
+from airflow_clickhouse_plug.sensors.clickhouse import ClickHouseSensor
 
 
 class ClickHouseSensorTestCase(unittest.TestCase):
@@ -88,7 +88,7 @@ class ClickHouseSensorTestCase(unittest.TestCase):
 
     def setUp(self):
         self._hook_cls_patcher = mock.patch('.'.join((
-            'airflow_clickhouse_plugin.operators',
+            'airflow_clickhouse_plug.operators',
             'clickhouse.ClickHouseHook',
         )))
         self._hook_cls_mock = self._hook_cls_patcher.start()

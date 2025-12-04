@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from airflow_clickhouse_plugin.sensors.clickhouse_dbapi import \
+from airflow_clickhouse_plug.sensors.clickhouse_dbapi import \
     ClickHouseSqlSensor
 
 
@@ -31,7 +31,7 @@ class ClickHouseSqlSensorTestCase(unittest.TestCase):
 
     def setUp(self):
         self._hook_cls_patcher = mock.patch('.'.join((
-            'airflow_clickhouse_plugin.operators',
+            'airflow_clickhouse_plug.operators',
             'clickhouse_dbapi.ClickHouseDbApiHook',
         )))
         self._hook_cls_mock = self._hook_cls_patcher.start()

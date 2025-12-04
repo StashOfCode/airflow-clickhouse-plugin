@@ -3,7 +3,7 @@ from unittest import mock
 
 from airflow.models import Connection
 
-from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook, \
+from airflow_clickhouse_plug.hooks.clickhouse import ClickHouseHook, \
     _format_query_log
 
 

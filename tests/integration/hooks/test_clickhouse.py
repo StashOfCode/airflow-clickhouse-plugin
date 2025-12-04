@@ -1,6 +1,6 @@
 import unittest
 
-from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
+from airflow_clickhouse_plug.hooks.clickhouse import ClickHouseHook
 
 
 class ClickHouseHookTestCase(unittest.TestCase):
@@ -14,7 +14,7 @@ class ClickHouseHookTestCase(unittest.TestCase):
                 'structure': [('value', 'Int32')],
                 'data': [{'value': 1}, {'value': 2}],
             }],
-            query_id='airflow-clickhouse-plugin-test',
+            query_id='airflow-clickhouse-plug-test',
             types_check=True,
             columnar=True,
         )

@@ -2,7 +2,7 @@ import typing as t
 
 from airflow.providers.common.sql.operators import sql
 
-from airflow_clickhouse_plugin.hooks.clickhouse_dbapi import \
+from airflow_clickhouse_plug.hooks.clickhouse_dbapi import \
     ClickHouseDbApiHook
 
 

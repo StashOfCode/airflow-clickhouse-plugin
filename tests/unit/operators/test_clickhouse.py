@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from airflow_clickhouse_plugin.operators.clickhouse import \
+from airflow_clickhouse_plug.operators.clickhouse import \
     ClickHouseOperator
 
 
@@ -66,7 +66,7 @@ class ClickHouseOperatorTestCase(unittest.TestCase):
 
     def setUp(self):
         self._hook_cls_patcher = mock.patch('.'.join((
-            'airflow_clickhouse_plugin.operators',
+            'airflow_clickhouse_plug.operators',
             'clickhouse.ClickHouseHook',
         )))
         self._hook_cls_mock = self._hook_cls_patcher.start()

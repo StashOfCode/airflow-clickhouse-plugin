@@ -37,7 +37,7 @@ jobs:
     - name: Run tests on ClickHouse server
       env:
         AIRFLOW_CONN_CLICKHOUSE_DEFAULT: "clickhouse://localhost:${{ job.services.clickhouse.ports['9000'] }}"
-        PYTHONPATH: "${{ github.workspace }}/src"  # for tests to import src/airflow_clickhouse_plugin
+        PYTHONPATH: "${{ github.workspace }}/src"  # for tests to import src/airflow_clickhouse_plug
       run: |
         cd tests
         python -m unittest
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/airflow-clickhouse-plugin
+      url: https://test.pypi.org/p/airflow-clickhouse-plug
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
     steps:
@@ -104,13 +104,13 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Install airflow-clickhouse-plugin from TestPyPI
+      - name: Install airflow-clickhouse-plug from TestPyPI
         run: |
           python -m pip install --upgrade pip
           python -m pip install \
             --index-url https://test.pypi.org/simple \
             --extra-index-url https://pypi.org/simple \
-            airflow-clickhouse-plugin[common.sql]==1.5.0 \
+            airflow-clickhouse-plug[common.sql]==1.5.0 \
             --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-3.1.0/constraints-3.12.txt"
       - name: Run tests on ClickHouse server
         env:
@@ -128,7 +128,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/airflow-clickhouse-plugin
+      url: https://pypi.org/p/airflow-clickhouse-plug
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
     steps:
@@ -157,11 +157,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Install airflow-clickhouse-plugin from PyPI
+      - name: Install airflow-clickhouse-plug from PyPI
         run: |
           python -m pip install --upgrade pip
           python -m pip install \
-            airflow-clickhouse-plugin[common.sql]==1.5.0 \
+            airflow-clickhouse-plug[common.sql]==1.5.0 \
             --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-3.1.0/constraints-3.12.txt"
       - name: Run tests on ClickHouse server
         env:

@@ -1,10 +1,10 @@
 # Airflow ClickHouse Plugin
 
-![PyPI - Downloads](https://img.shields.io/pypi/dm/airflow-clickhouse-plugin)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bryzgaloff/airflow-clickhouse-plugin/tests.yml?branch=master)
-![GitHub contributors](https://img.shields.io/github/contributors/bryzgaloff/airflow-clickhouse-plugin?color=blue)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/airflow-clickhouse-plug)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/StashOfCode/airflow-clickhouse-plug/tests.yml?branch=master)
+![GitHub contributors](https://img.shields.io/github/contributors/StashOfCode/airflow-clickhouse-plug?color=blue)
 
-🔝 The most popular [Apache Airflow][airflow] plugin for ClickHouse, ranked in the top 1% of downloads [on PyPI](https://pypi.org/project/airflow-clickhouse-plugin/). Based on awesome [mymarilyn/clickhouse-driver][ch-driver].
+🔝 The most popular [Apache Airflow][airflow] plugin for ClickHouse, ranked in the top 1% of downloads [on PyPI](https://pypi.org/project/airflow-clickhouse-plug/). Based on awesome [mymarilyn/clickhouse-driver][ch-driver].
 
 This plugin provides two families of operators: richer [`clickhouse_driver.Client.execute`-based](#clickhouse-driver-family) and standardized [compatible with Python DB API 2.0](#python-db-api-20-family).
 
@@ -30,7 +30,7 @@ See reference and examples [below](#usage).
 
 ### Installation and dependencies
 
-`pip install -U airflow-clickhouse-plugin`
+`pip install -U airflow-clickhouse-plug`
 
 Dependencies: only `apache-airflow` and `clickhouse-driver`.
 
@@ -56,7 +56,7 @@ An example is also available [below](#db-api-20-clickhousesqlsensor-and-clickhou
 
 ### Installation and dependencies
 
-Add `common.sql` extra when installing the plugin: `pip install -U airflow-clickhouse-plugin[common.sql]` — to enable DB API 2.0 operators.
+Add `common.sql` extra when installing the plugin: `pip install -U airflow-clickhouse-plug[common.sql]` — to enable DB API 2.0 operators.
 
 Dependencies: `apache-airflow-providers-common-sql` (usually pre-packed with Airflow) in addition to `apache-airflow` and `clickhouse-driver`.
 
@@ -64,7 +64,7 @@ Dependencies: `apache-airflow-providers-common-sql` (usually pre-packed with Air
 
 Different versions of the plugin support different combinations of Python and Airflow versions. We _primarily_ support **Airflow 2.0+ and Python 3.8+**. If you need to use the plugin with older Python-Airflow combinations, pick a suitable plugin version:
 
-| airflow-clickhouse-plugin version | Airflow version         | Python version     |
+| airflow-clickhouse-plug   version | Airflow version         | Python version     |
 |-----------------------------------|-------------------------|--------------------|
 | 1.6.0                             | \>=2.0.0,<3.2.0         | ~=3.10             |
 | 1.5.0                             | \>=2.0.0,<3.1.0         | ~=3.9              |
@@ -87,7 +87,7 @@ Different versions of the plugin support different combinations of Python and Ai
 
 [DB API 2.0 functionality](#python-db-api-20-family) requires `apache-airflow>2.9.3` (strictly greater since versions up to 2.9.3 had an MRO-related bug, see [#87](https://github.com/bryzgaloff/airflow-clickhouse-plugin/issues/87)) and `apache-airflow-providers-common-sql>=1.3`: earlier versions are not supported.
 
-Previous versions of the plugin might require `pandas` extra: `pip install airflow-clickhouse-plugin[pandas]==0.11.0`. Check out earlier versions of `README.md` for details.
+Previous versions of the plugin might require `pandas` extra: `pip install airflow-clickhouse-plug[pandas]==0.11.0`. Check out earlier versions of `README.md` for details.
 
 # Usage
 
@@ -95,7 +95,7 @@ To see examples [scroll down](#examples). To run them, [create an Airflow connec
 
 ## ClickHouseOperator reference
 
-To import `ClickHouseOperator` use `from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator`.
+To import `ClickHouseOperator` use `from airflow_clickhouse_plug.operators.clickhouse import ClickHouseOperator`.
 
 Supported arguments:
 * `sql` (templated, required): query (if argument is a single `str`) or multiple queries (iterable of `str`). Supports files with `.sql` extension.
@@ -123,7 +123,7 @@ See [example](#clickhouseoperator-example) below.
 
 ## ClickHouseHook reference
 
-To import `ClickHouseHook` use `from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook`.
+To import `ClickHouseHook` use `from airflow_clickhouse_plug.hooks.clickhouse import ClickHouseHook`.
 
 Supported kwargs of constructor (`__init__` method):
 * `clickhouse_conn_id`: Airflow connection id. Connection schema is described [below](#clickhouse-connection-schema). Default connection id is `clickhouse_default`.
@@ -140,7 +140,7 @@ See [example](#clickhousehook-example) below.
 
 ## ClickHouseSensor reference
 
-To import `ClickHouseSensor` use `from airflow_clickhouse_plugin.sensors.clickhouse import ClickHouseSensor`.
+To import `ClickHouseSensor` use `from airflow_clickhouse_plug.sensors.clickhouse import ClickHouseSensor`.
 
 This class wraps [`ClickHouseHook.execute` method](#clickhousehook-reference) into an [Airflow sensor][airflow-sensor]. Supports all the arguments of [`ClickHouseOperator`](#clickhouseoperator-reference) and additionally:
 * `is_success`: a callable which accepts a single argument — a return value of `ClickHouseHook.execute`. If a return value of `is_success` is truthy, the sensor succeeds. By default, the callable is `bool`: i.e. if the return value of `ClickHouseHook.execute` is truthy, the sensor succeeds. Usually, `execute` is a list of records returned by query: thus, by default it is falsy if no records are returned.
@@ -209,7 +209,7 @@ By default, the plugin uses Airflow connection with id `'clickhouse_default'`.
 
 ```python
 from airflow import DAG
-from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
+from airflow_clickhouse_plug.operators.clickhouse import ClickHouseOperator
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
@@ -251,7 +251,7 @@ with DAG(
 
 ```python
 from airflow import DAG
-from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
+from airflow_clickhouse_plug.hooks.clickhouse import ClickHouseHook
 from airflow.providers.sqlite.hooks.sqlite import SqliteHook
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
@@ -280,8 +280,8 @@ Important note: don't try to insert values using `ch_hook.execute('INSERT INTO s
 
 ```python
 from airflow import DAG
-from airflow_clickhouse_plugin.sensors.clickhouse import ClickHouseSensor
-from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
+from airflow_clickhouse_plug.sensors.clickhouse import ClickHouseSensor
+from airflow_clickhouse_plug.operators.clickhouse import ClickHouseOperator
 from airflow.utils.dates import days_ago
 
 
@@ -308,8 +308,8 @@ with DAG(
 
 ```python
 from airflow import DAG
-from airflow_clickhouse_plugin.sensors.clickhouse_dbapi import ClickHouseSqlSensor
-from airflow_clickhouse_plugin.operators.clickhouse_dbapi import ClickHouseSQLExecuteQueryOperator
+from airflow_clickhouse_plug.sensors.clickhouse_dbapi import ClickHouseSqlSensor
+from airflow_clickhouse_plug.operators.clickhouse_dbapi import ClickHouseSQLExecuteQueryOperator
 from airflow.utils.dates import days_ago
 
 
@@ -359,8 +359,8 @@ Install dependencies into container and run tests (execute inside container):
 ```bash
 apt-get update
 apt-get install -y python3 python3-pip git make
-git clone https://github.com/whisklabs/airflow-clickhouse-plugin.git
-cd airflow-clickhouse-plugin
+git clone https://github.com/StashOfCode/airflow-clickhouse-plug.git
+cd airflow-clickhouse-plug
 python3 -m pip install -r requirements.txt
 PYTHONPATH=src AIRFLOW_CONN_CLICKHOUSE_DEFAULT=clickhouse://localhost python3 -m unittest discover -s tests
 ```
@@ -369,7 +369,7 @@ Stop the container.
 
 # Contributors
 
-* Created by Anton Bryzgalov, [@bryzgaloff](https://github.com/bryzgaloff), originally at [Whisk, Samsung](https://github.com/whisklabs)
+* Abandoned by Anton Bryzgalov, [@bryzgaloff](https://github.com/bryzgaloff), originally at [Whisk, Samsung](https://github.com/whisklabs)
 * Inspired by Viktor Taranenko, [@viktortnk](https://github.com/viktortnk) (Whisk, Samsung)
 
 Community contributors:
@@ -408,7 +408,7 @@ Community contributors:
 [airflow-connection-howto]: https://airflow.apache.org/docs/apache-airflow/stable/howto/connection.html
 [airflow-conn-dejson]: https://airflow.apache.org/docs/apache-airflow/2.1.0/_api/airflow/models/index.html?highlight=connection#airflow.models.Connection.extra_dejson
 [airflow-conn-env]: https://airflow.apache.org/docs/apache-airflow/2.1.0/howto/connection.html#storing-a-connection-in-environment-variables
-[github-action-src]: https://github.com/whisklabs/airflow-clickhouse-plugin/tree/master/.github/workflows
+[github-action-src]: https://github.com/StashOfCode/airflow-clickhouse-plug/tree/master/.github/workflows
 [pep-440-compatible-releases]: https://peps.python.org/pep-0440/#compatible-release
 [apache-airflow-providers-common-sql]: https://airflow.apache.org/docs/apache-airflow-providers-common-sql/stable/index.html
 [db-api-pep]: https://peps.python.org/pep-0249/

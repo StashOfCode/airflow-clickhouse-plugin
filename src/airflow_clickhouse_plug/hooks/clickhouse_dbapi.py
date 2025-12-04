@@ -1,7 +1,7 @@
 import clickhouse_driver
 from airflow.providers.common.sql.hooks.sql import DbApiHook
 
-from airflow_clickhouse_plugin.hooks.clickhouse import conn_to_kwargs, \
+from airflow_clickhouse_plug.hooks.clickhouse import conn_to_kwargs, \
     default_conn_name
 
 
