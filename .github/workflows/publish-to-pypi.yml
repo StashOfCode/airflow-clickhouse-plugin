@@ -74,8 +74,8 @@ jobs:
     environment:
       name: testpypi
       url: https://test.pypi.org/p/airflow-clickhouse-plug
-    permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+    # permissions:
+    #   id-token: write  # IMPORTANT: mandatory for trusted publishing
     steps:
     - name: Download distribution packages
       uses: actions/download-artifact@v6
@@ -86,6 +86,8 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         repository-url: https://test.pypi.org/legacy/
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
 
   run-testpypi-tests:
     name: Test TestPyPI on ClickHouse
